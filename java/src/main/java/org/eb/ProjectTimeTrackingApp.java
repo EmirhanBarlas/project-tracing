@@ -88,7 +88,7 @@ public class ProjectTimeTrackingApp extends JFrame {
             return;
         }
 
-        String query = "UPDATE sureler SET bitis_zamani = NOW() WHERE bitis_zamani IS NULL ORDER BY id DESC LIMIT 1";
+        String query = "UPDATE sureler SET bitis_zamani = NOW(), sure = TIMEDIFF(NOW(), baslangic_zamani) WHERE bitis_zamani IS NULL ORDER BY id DESC LIMIT 1";
 
         try {
             Statement statement = connection.createStatement();
