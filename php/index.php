@@ -9,6 +9,7 @@
 <body>
     <div class="container mt-5">
         <h2 class="mb-4">Project Time Tracking</h2>
+        <a href="add.php" class="btn btn-primary mb-4">Add Project</a>
         <table class="table">
             <thead>
                 <tr>
@@ -31,6 +32,10 @@
                 }
                 $sql = "SELECT proje_adi, baslangic_zamani, bitis_zamani, sure FROM sureler";
                 $result = $conn->query($sql);
+
+                if ($result === false) {
+                    die("Query failed: " . $conn->error);
+                }
 
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
